@@ -2,11 +2,8 @@
 
 class GhostManager
 {
-	//The ghosts will switch between the scatter mode and the chase mode before permanently chasing Pacman.
-	//So we need this to keep track of the waves.
-	unsigned char current_wave;
 
-	//Damn, I really used a lot of timers.
+	unsigned char current_wave;
 	unsigned short wave_timer;
 
 	std::array<Ghost, 4> ghosts;

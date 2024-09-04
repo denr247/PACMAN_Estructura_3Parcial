@@ -27,7 +27,6 @@ void GhostManager::reset(unsigned char i_level, const std::array<Position, 4>& i
 {
 	current_wave = 0;
 
-	//This is how we're increasing the difficulty.
 	wave_timer = static_cast<unsigned short>(LONG_SCATTER_DURATION / pow(2, i_level));
 
 	for (unsigned char a = 0; a < 4; a++)
@@ -37,14 +36,13 @@ void GhostManager::reset(unsigned char i_level, const std::array<Position, 4>& i
 
 	for (Ghost& ghost : ghosts)
 	{
-		//We use the blue ghost to get the location of the house and the red ghost to get the location of the exit.
 		ghost.reset(ghosts[2].get_position(), ghosts[0].get_position());
 	}
 }
 
 void GhostManager::update(unsigned char i_level, std::array<std::array<Cell, MAP_HEIGHT>, MAP_WIDTH>& i_map, Pacman& i_pacman)
 {
-	if (0 == i_pacman.get_energizer_timer()) //We won't update the wave timer when Pacman is energized.
+	if (0 == i_pacman.get_energizer_timer())
 	{
 		if (0 == wave_timer)
 		{
@@ -58,7 +56,6 @@ void GhostManager::update(unsigned char i_level, std::array<std::array<Cell, MAP
 				}
 			}
 
-			//I took the rules from the website.
 			if (1 == current_wave % 2)
 			{
 				wave_timer = CHASE_DURATION;

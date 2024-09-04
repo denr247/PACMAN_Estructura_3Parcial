@@ -3,10 +3,7 @@
 #include <iostream>
 #include "Headers/Global.hpp"
 #include "Headers/MapCollision.hpp"
-//#include "Headers/Puntuacion.hpp"
 #include <SFML/Audio.hpp>
-#include <SFML/Graphics.hpp>
-
 
 sf::SoundBuffer pelletBuffer;
 sf::Sound pelletSound;
@@ -17,11 +14,9 @@ bool pelletSoundPlaying = false;
 bool map_collision(bool i_collect_pellets, bool i_use_door, short i_x, short i_y, std::array<std::array<Cell, MAP_HEIGHT>, MAP_WIDTH>& i_map)
 {
 	bool output = 0;
-	//Getting the exact position.
 	float cell_x = i_x / static_cast<float>(CELL_SIZE);
 	float cell_y = i_y / static_cast<float>(CELL_SIZE);
 
-	//A ghost/Pacman can intersect 4 cells at most.
 	for (unsigned char a = 0; a < 4; a++)
 	{
 		short x = 0;
@@ -29,38 +24,37 @@ bool map_collision(bool i_collect_pellets, bool i_use_door, short i_x, short i_y
 
 		switch (a)
 		{
-			case 0: //Top left cell
+			case 0:
 			{
 				x = static_cast<short>(floor(cell_x));
 				y = static_cast<short>(floor(cell_y));
 
 				break;
 			}
-			case 1: //Top right cell
+			case 1:
 			{
 				x = static_cast<short>(ceil(cell_x));
 				y = static_cast<short>(floor(cell_y));
 
 				break;
 			}
-			case 2: //Bottom left cell
+			case 2:
 			{
 				x = static_cast<short>(floor(cell_x));
 				y = static_cast<short>(ceil(cell_y));
 
 				break;
 			}
-			case 3: //Bottom right cell
+			case 3:
 			{
 				x = static_cast<short>(ceil(cell_x));
 				y = static_cast<short>(ceil(cell_y));
 			}
 		}
 
-		//Making sure that the position is inside the map.
 		if (0 <= x && 0 <= y && MAP_HEIGHT > y && MAP_WIDTH > x)
 		{
-			if (0 == i_collect_pellets) //Here we only care about the walls.
+			if (0 == i_collect_pellets)
 			{
 				if (Cell::Wall == i_map[x][y])
 				{
@@ -71,7 +65,7 @@ bool map_collision(bool i_collect_pellets, bool i_use_door, short i_x, short i_y
 					output = 1;
 				}
 			}
-			else //Here we only care about the collectables.
+			else
 			{
 				if (Cell::Energizer == i_map[x][y])
 				{
@@ -115,25 +109,24 @@ bool map_collision_pacman(bool i_collect_pellets, bool i_use_door, short i_x, sh
 
         switch (a)
         {
-            case 0: // Top left cell
+            case 0:
                 x = static_cast<short>(floor(cell_x));
                 y = static_cast<short>(floor(cell_y));
                 break;
-            case 1: // Top right cell
+            case 1:
                 x = static_cast<short>(ceil(cell_x));
                 y = static_cast<short>(floor(cell_y));
                 break;
-            case 2: // Bottom left cell
+            case 2:
                 x = static_cast<short>(floor(cell_x));
                 y = static_cast<short>(ceil(cell_y));
                 break;
-            case 3: // Bottom right cell
+            case 3:
                 x = static_cast<short>(ceil(cell_x));
                 y = static_cast<short>(ceil(cell_y));
                 break;
         }
 
-        // Check if coordinates are within map bounds
         if (0 <= x && 0 <= y && MAP_HEIGHT > y && MAP_WIDTH > x)
         {
             if (0 == i_collect_pellets)
@@ -165,9 +158,8 @@ bool map_collision_pacman(bool i_collect_pellets, bool i_use_door, short i_x, sh
                 }
                 else if(Cell::Fruit == i_map[x][y])
                 {
-                    sf::Text text;
-                    puntuacion += 50;
-                    text.setString("50");
+                     puntuacion += 50;
+
                     // Borra la fruta actual del mapa
                     i_map[x][y] = Cell::Empty;
 
@@ -190,7 +182,6 @@ bool map_collision_pacman(bool i_collect_pellets, bool i_use_door, short i_x, sh
         }
     }
 
-    // Update pellet sound status
     if (pelletSoundPlaying && pelletSound.getStatus() == sf::Sound::Stopped) {
         pelletSoundPlaying = false;
     }

@@ -180,6 +180,15 @@ void Pacman::update(unsigned char i_level, std::array<std::array<Cell, MAP_HEIGH
     {
         position.x = PACMAN_SPEED - CELL_SIZE;
     }
+    if (-CELL_SIZE >= position.y)
+    {
+        position.y = CELL_SIZE * MAP_WIDTH - PACMAN_SPEED;
+    }
+    else if (CELL_SIZE * MAP_WIDTH <= position.y)
+    {
+        position.y = PACMAN_SPEED - CELL_SIZE;
+    }
+
 
     if (map_collision_pacman(1, 0, position.x, position.y, i_map, puntuacion))
     {

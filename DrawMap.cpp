@@ -24,7 +24,6 @@ void draw_map(const std::array<std::array<Cell, MAP_HEIGHT>, MAP_WIDTH>& i_map, 
 		{
 			sprite.setPosition(static_cast<float>(CELL_SIZE * a), static_cast<float>(CELL_SIZE * b));
 
-			//We just crop out what we need from the texture.
 			switch (i_map[a][b])
 			{
 				case Cell::Door:
@@ -75,7 +74,6 @@ void draw_map(const std::array<std::array<Cell, MAP_HEIGHT>, MAP_WIDTH>& i_map, 
 						}
 					}
 
-					//Since we have warp tunnels, we need to draw them as if they're connected.
 					if (0 < a)
 					{
 						if (Cell::Wall == i_map[a - 1][b])
@@ -107,8 +105,6 @@ void draw_map(const std::array<std::array<Cell, MAP_HEIGHT>, MAP_WIDTH>& i_map, 
 							up = 1;
 						}
 					}
-
-					//--------------------------------------------<         DISTRIBUTIVE PROPERTY!         >----------------------------
 					sprite.setTextureRect(sf::IntRect(CELL_SIZE * (down + 2 * (left + 2 * (right + 2 * up))), 0, CELL_SIZE, CELL_SIZE));
 
 					i_window.draw(sprite);
