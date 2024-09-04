@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="testeando" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/testeando" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="Headers" />
+				</Compiler>
+				<Linker>
+					<Add option="-lsfml-audio" />
+					<Add option="-lsfml-graphics" />
+					<Add option="-lsfml-system" />
+					<Add option="-lsfml-window" />
+					<Add library="sfml-graphics-d" />
+					<Add library="sfml-window-d" />
+					<Add library="sfml-system-d" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/testeando" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="sfml-graphics" />
+					<Add library="sfml-window" />
+					<Add library="sfml-system" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add directory="C:/Program Files/CodeBlocks/SFML/include" />
+		</Compiler>
+		<Linker>
+			<Add library="mingw32" />
+			<Add library="user32" />
+			<Add library="gdi32" />
+			<Add library="winmm" />
+			<Add library="dxguid" />
+			<Add directory="C:/Program Files/CodeBlocks/SFML/lib" />
+		</Linker>
+		<Unit filename="ConvertSketch.cpp" />
+		<Unit filename="ConvertSketch.hpp" />
+		<Unit filename="DrawMap.cpp" />
+		<Unit filename="DrawMap.hpp" />
+		<Unit filename="DrawText.cpp" />
+		<Unit filename="DrawText.hpp" />
+		<Unit filename="Font.png" />
+		<Unit filename="Ghost.cpp" />
+		<Unit filename="Ghost.hpp" />
+		<Unit filename="Ghost16.png" />
+		<Unit filename="GhostManager.cpp" />
+		<Unit filename="GhostManager.hpp" />
+		<Unit filename="Global.hpp" />
+		<Unit filename="Headers/Nivel.hpp" />
+		<Unit filename="Map16.png" />
+		<Unit filename="MapCollision.cpp" />
+		<Unit filename="MapCollision.hpp" />
+		<Unit filename="Nivel.cpp" />
+		<Unit filename="Pacman.cpp" />
+		<Unit filename="Pacman.hpp" />
+		<Unit filename="Pacman16.png" />
+		<Unit filename="PacmanDeath16.png" />
+		<Unit filename="cb.bmp" />
+		<Unit filename="main.cpp" />
+		<Extensions>
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
